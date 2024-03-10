@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Scalculator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Calculator</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="input-box">
+            <input type="text" class="user-input" placeholder="0" readonly>
+            <h3 class="result">0</h3>
+        </div>
+        <div class="btns-box">
+           <button class="with-bg-btn" id="ac" onclick="input.value = '';
+           result.innerHTML = '0' ">AC</button>
+                
+            <button class="with-bg-btn" id="del-btn" onclick=" backSpace()">
+                <i class="fa-solid fa-delete-left"></i></i></button>
+                    <button class="btn with-bg-btn">%</button>
+                    <button class="btn with-bg-btn">+</button>
+                    <button class="btn">1</button>
+                    <button class="btn">2</button>
+                    <button class="btn">3</button>
+                    <button class="btn with-bg-btn">x</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn">6</button>
+                    <button class="btn with-bg-btn">-</button>
+                    <button class="btn">7</button>
+                    <button class="btn">8</button>
+                    <button class="btn">9</button>
+                    <button class="btn with-bg-btn">/</button>
+                    <button class="btn">.</button>
+                    <button class="btn">0</button>
+                    <button class="btn">00</button>
+                    <button class="btns with-bg-btn" onclick=" calculate()">=</button>
+        </div>
+    </div>
+
+    <!-- CSS  -->
+    <style>
+        /* Import google fonts poppins */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* background: #494E54;
+     */
+    font-family: 'poppins', sans-serif; /* Poppins google*/
+}
+
+.container{
+    padding: 10px;
+    background: #292c31;
+    height: 600px;
+    width: 330px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    overflow: hidden;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.container .input-box{
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    /* overflow-x: scroll; */
+}
+
+.container .input-box .result{
+    color: white;
+    font-size: 43px;
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+}
+
+.container.light .input-box .result{
+    color: black;
+}
+
+.container .input-box input{
+    all:unset;
+    color: dimgray;
+    position: absolute;
+    right: 25px;
+    bottom: 60px;
+    text-align: right;
+    font-size: 24px;
+}
+
+.container .btns-box{
+    position: absolute;
+    left: 0;
+    top: 200px;
+    width: 100%;
+    padding: 10px;
+    padding-left: 14px;
+}
+
+.container .btns-box .btn, .container .btns-box
+.btns, .container .btns-box #ac, .container .btns-box
+#del-btn{
+    all: unset;
+    all: unset;
+    width: 60px;
+    height: 60px;
+    float: left;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12.5px;
+    margin-top: 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 21px;
+}
+
+.container .btns-box .btn, .container .btns-box
+.btns, .container .btns-box #ac, .container .btns-box
+#del-btn{
+    background-color: #323337;
+    box-shadow: rgba(0,0,0, 0.1) 0px 4px 12px;
+}
+
+.container .btns-box .with-bg-btn{
+    background: #30AD6B;
+}
+
+::selection{
+    background: rgb(100, 149, 237, 0.8);
+    color: white;    
+}
+    </style>
+
+    <!-- java script  -->
+    <script>
+        let input = document.querySelector('.container .input-box input');
+let result = document.querySelector('.container .input-box .result');
+
+let allBtns = document.querySelectorAll('.container .btn');
+
+let backSpace =() =>{
+    input.value = input.value.substr(0, input .value.length - 1);
+}
+
+for(let item of allBtns){
+    item.addEventListener('click',(e)=>{
+        let btnText = e.target.innerHTML;
+        if(btnText == 'x'){
+            btnText = '*';
+        }
+        if(btnText == '+'){
+            btnText = '+';
+        }
+        input.value += btnText;
+    })
+}
+    let calculate =()=>{
+        result.innerHTML = eval(input.value);
+    }
+    </script>
+</body>
+</html>
